@@ -1,52 +1,60 @@
 import { LitElement, html, css } from 'lit';
 
-const logo = new URL('../assets/open-wc-logo.svg', import.meta.url).href;
-
 class MyCard extends LitElement {
   static properties = {
     header: { type: String },
   };
 
   static styles = css`
-    :host {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
-      font-size: calc(10px + 2vmin);
-      color: #1a2b42;
-      max-width: 960px;
-      margin: 0 auto;
+    button {
+      cursor: pointer;
+      background-color: #4681f4;
+      color: white;
+      border-radius: 10px;
+      padding: 6px;
+      font-size: 25px;
+      font-weight: bold;
       text-align: center;
-      background-color: var(--my-card-background-color);
+      width: 14%;
     }
 
-    main {
-      flex-grow: 1;
+    .outline {
+      justify-content: center;
+      display: flex;
+      min-height: 400px;
     }
 
-    .logo {
-      margin-top: 36px;
-      animation: app-logo-spin infinite 20s linear;
+    .lecard {
+      text-align: center;
+      border: solid grey 6px;
+      max-width: 400px;
+      border-radius: 20px;
+      margin-bottom: 10px;
+      font-size: 20px;
+      background-color: white;
+    }
+    img {
+      width: 350px;
     }
 
-    @keyframes app-logo-spin {
-      from {
-        transform: rotate(0deg);
+    @media screen and (min-width: 501px) and (max-width: 800px) {
+    }
+    @media screen and (max-width: 500px) {
+      .lecard {
+        font-size: 5vw;
       }
-      to {
-        transform: rotate(360deg);
-      }
     }
-
-    .app-footer {
-      font-size: calc(12px + 0.5vmin);
+    .buttons {
+      margin: 16px auto;
+      display: flex;
       align-items: center;
+      justify-content: space-evenly;
     }
-
-    .app-footer a {
-      margin-left: 5px;
+    button:hover {
+      background-color: red;
+    }
+    button:focus {
+      background-color: red;
     }
   `;
 
@@ -57,30 +65,28 @@ class MyCard extends LitElement {
 
   render() {
     return html`
-      <main>
-        <div class="logo"><img alt="open-wc logo" src=${logo} /></div>
-        <h1>${this.header}</h1>
+      <div class="buttons">
+        <button class="copyCat">Copy</button>
+        <button id="del">Delete</button>
+        <button class="btnDet">Toggle Details</button>
+        <button class="btnCT">Change Title</button>
+        <button class="btnBG">Change Background Color</button>
+      </div>
+      <div class="outline">
+        <div class="lecard">
+          <h2>Some Nerd</h2>
 
-        <p>Edit <code>src/MyCard.js</code> and save to reload.</p>
-        <a
-          class="app-link"
-          href="https://open-wc.org/guides/developing-components/code-examples/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Code examples
-        </a>
-      </main>
+          <img
+            src="https://i.kym-cdn.com/news_feeds/icons/mobile/000/037/359/05b.jpg"
+            alt="Obi-Wan headshot"
+          />
 
-      <p class="app-footer">
-        🚽 Made with love by
-        <a
-          target="_blank"
-          rel="noopener noreferrer"
-          href="https://github.com/open-wc"
-          >open-wc</a
-        >.
-      </p>
+          <p class="details">
+            Hello there <br />
+            Lightsaber go <i>brrrr</i>
+          </p>
+        </div>
+      </div>
     `;
   }
 }
